@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<plugin name="jameica.soap" version="1.0" class="de.willuhn.jameica.soap.Plugin">
+
+  <description>SOAP-Konnektor für Jameica</description>
+  <url></url>
+  <homepage>http://www.willuhn.de/projects/jameica</homepage>
+  <license>GPL - http://www.gnu.org/copyleft/gpl.html</license>
+
+  <requires>
+    <import plugin="jameica.webadmin"/>
+  </requires>
+
+  <classfinder>
+    <include>jameica\.soap\.jar</include>
+    <include>.*\.class</include>
+  </classfinder>
+
+</plugin>
+
