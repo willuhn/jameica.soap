@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Plugin.java,v $
- * $Revision: 1.1 $
- * $Date: 2007/09/29 17:19:43 $
+ * $Revision: 1.2 $
+ * $Date: 2008/07/08 14:27:37 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -12,8 +12,6 @@
  **********************************************************************/
 
 package de.willuhn.jameica.soap;
-
-import java.io.File;
 
 import org.apache.commons.logging.LogFactory;
 
@@ -29,11 +27,10 @@ public class Plugin extends AbstractPlugin
 
   /**
    * ct.
-   * @param file
    */
-  public Plugin(File file)
+  public Plugin()
   {
-    super(file);
+    super();
   }
 
   /**
@@ -70,6 +67,9 @@ public class Plugin extends AbstractPlugin
 
 /**********************************************************************
  * $Log: Plugin.java,v $
+ * Revision 1.2  2008/07/08 14:27:37  willuhn
+ * @C Konstruktor war deprecated
+ *
  * Revision 1.1  2007/09/29 17:19:43  willuhn
  * @N initial import
  *
