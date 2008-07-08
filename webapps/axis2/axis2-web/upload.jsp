@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -17,6 +16,8 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <jsp:include page="include/adminheader.jsp"/>
 <script type="text/javascript">

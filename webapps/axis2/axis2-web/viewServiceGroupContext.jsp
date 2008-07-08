@@ -1,10 +1,3 @@
-<%@ page import="org.apache.axis2.Constants"%>
-<%@ page import="org.apache.axis2.context.ConfigurationContext"%>
-<%@ page import="org.apache.axis2.context.ServiceGroupContext"%>
-<%@ page import="java.util.Hashtable"%>
-<%@ page import="java.util.Iterator"%>
-<%@ page import="java.util.Map"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -23,6 +16,11 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page import="org.apache.axis2.context.ConfigurationContext"%>
+<%@ page import="org.apache.axis2.context.ServiceGroupContext"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="include/adminheader.jsp"></jsp:include>
 <h1>Runing Context hierachy</h1>
 <%

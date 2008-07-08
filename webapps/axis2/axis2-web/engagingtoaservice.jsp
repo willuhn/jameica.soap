@@ -1,10 +1,3 @@
-<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="org.apache.axis2.Constants,
-                                                                             org.apache.axis2.description.AxisModule,
-                                                                             org.apache.axis2.description.AxisService,
-                                                                             java.util.Collection,
-                                                                             java.util.HashMap,
-                                                                             java.util.Iterator"
-         %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -23,6 +16,14 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="org.apache.axis2.Constants,
+                                                                             org.apache.axis2.description.AxisModule,
+                                                                             org.apache.axis2.description.AxisService,
+                                                                             java.util.Collection,
+                                                                             java.util.HashMap,
+                                                                             java.util.Iterator"
+         %>
 <jsp:include page="include/adminheader.jsp"></jsp:include>
 <%
     String status = (String) request.getSession().getAttribute(Constants.ENGAGE_STATUS);

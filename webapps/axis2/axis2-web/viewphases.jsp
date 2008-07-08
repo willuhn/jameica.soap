@@ -15,11 +15,10 @@
   ~ KIND, either express or implied. See the License for the
   ~ specific language governing permissions and limitations
   ~ under the License.
-  --%>
-<%@ page import="org.apache.axis2.Constants,
-                 org.apache.axis2.engine.Phase,
-                 java.util.ArrayList"%>
- <%@ page import="org.apache.axis2.deployment.util.PhasesInfo"%>
+  --%> <%@ page import="org.apache.axis2.Constants,
+                 org.apache.axis2.deployment.util.PhasesInfo,
+                 org.apache.axis2.engine.Phase"%>
+ <%@ page import="java.util.ArrayList"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="include/adminheader.jsp"></jsp:include>
 <h1>Available Phases</h1>

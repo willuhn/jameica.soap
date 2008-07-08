@@ -1,11 +1,3 @@
-<%@ page import="org.apache.axis2.Constants,
-                 org.apache.axis2.description.AxisModule" %>
-<%@ page import="org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
-<%@ page import="org.apache.axis2.util.JavaUtils" %>
-<%@ page import="java.util.*" %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file

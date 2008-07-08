@@ -1,12 +1,3 @@
-<%@ page import="org.apache.axis2.Constants" %>
-<%@ page import="org.apache.axis2.description.AxisModule" %>
-<%@ page import="org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="org.apache.axis2.transport.http.AxisServlet"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -25,6 +16,15 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page import="org.apache.axis2.Constants" %>
+<%@ page import="org.apache.axis2.description.AxisModule" %>
+<%@ page import="org.apache.axis2.description.AxisOperation" %>
+<%@ page import="org.apache.axis2.description.AxisService" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Iterator" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
   <jsp:include page="include/httpbase.jsp"/>
@@ -54,7 +54,7 @@
 <h2><font color="blue"><a href="<%=prifix + axisService.getName()%>?wsdl"><%=serviceName%></a>
 </font></h2>
 <font color="blue">Service EPR :</font><font color="black"><%=prifix + axisService.getName()%></font>
-<h4>Service Description : <font color="black"><%=axisService.getServiceDescription()%></h4>
+<h4>Service Description : <font color="black"><%=axisService.getServiceDescription()%></font></h4>
 <i><font color="blue">Service Status : <%=axisService.isActive() ? "Active" : "InActive"%></font></i><br/>
 <%
   Collection engagedModules = axisService.getEngagedModules();

@@ -1,37 +1,3 @@
-<html>
-<%@ page import="org.apache.axiom.om.OMAbstractFactory,
-                 org.apache.axiom.om.OMElement,
-                 org.apache.axiom.om.OMFactory,
-                 org.apache.axiom.om.OMNamespace,
-                 org.apache.axis2.AxisFault,
-                 org.apache.axis2.Constants,
-                 org.apache.axis2.addressing.EndpointReference,
-                 org.apache.axis2.client.Options,
-                 org.apache.axis2.client.ServiceClient,
-                 org.apache.axis2.context.ConfigurationContext,
-                 org.apache.axis2.context.ConfigurationContextFactory,
-                 javax.servlet.ServletContext,
-                 javax.servlet.http.HttpServletRequest,
-                 javax.servlet.http.HttpServletResponse,
-                 javax.servlet.jsp.JspWriter,
-                 javax.xml.parsers.SAXParser,
-                 javax.xml.parsers.SAXParserFactory"
-         session="false" %>
-<%@ page import="javax.xml.stream.XMLOutputFactory" %>
-<%@ page import="javax.xml.stream.XMLStreamException" %>
-<%@ page import="java.io.IOException" %>
-<%@ page import="java.io.InputStream" %>
-<%@ page import="java.io.StringWriter" %>
-<%@ page import="java.lang.Class" %>
-<%@ page import="java.lang.ClassNotFoundException"%>
-<%@ page import="java.lang.Exception" %>
-<%@ page import="java.lang.Integer" %>
-<%@ page import="java.lang.NoClassDefFoundError" %>
-<%@ page import="java.lang.SecurityException" %>
-<%@ page import="java.lang.String" %>
-<%@ page import="java.lang.System" %>
-<%@ page import="java.lang.Throwable" %>
-
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -50,6 +16,27 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<html>
+<%@ page import="org.apache.axis2.AxisFault,
+                 org.apache.axis2.Constants,
+                 org.apache.axis2.addressing.EndpointReference,
+                 org.apache.axis2.client.Options,
+                 org.apache.axis2.client.ServiceClient,
+                 org.apache.axis2.context.ConfigurationContext,
+                 org.apache.axis2.context.ConfigurationContextFactory,
+                 javax.xml.parsers.SAXParser,
+                 javax.xml.parsers.SAXParserFactory,
+                 java.io.IOException,
+                 java.io.InputStream,
+                 java.io.StringWriter,
+                 org.apache.axiom.om.OMElement,
+                 org.apache.axiom.om.OMFactory,
+                 org.apache.axiom.om.OMNamespace,
+                 org.apache.axiom.om.OMAbstractFactory,
+                 javax.xml.stream.XMLOutputFactory,
+                 javax.xml.stream.XMLStreamException"
+         session="false" %>
 <head>
     <jsp:include page="include/httpbase.jsp"/>
     <title>Axis2 Happiness Page</title>
@@ -373,6 +360,8 @@
     }
     
     public String getFormatedSystemProperty(String systemProperty){
+        if (systemProperty == null)
+            return "";
     	return  systemProperty.replaceAll(":", ": ");
     }
 %>

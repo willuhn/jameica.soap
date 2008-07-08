@@ -1,10 +1,3 @@
-<%@ page import="org.apache.axis2.Constants,
-                 org.apache.axis2.description.AxisOperation" %>
-<%@ page import="org.apache.axis2.description.AxisService" %>
-<%@ page import="org.apache.axis2.description.Parameter" %>
-<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
-<%@ page import="org.apache.axis2.util.JavaUtils" %>
-<%@ page import="java.util.*" %>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -23,6 +16,18 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page import="org.apache.axis2.Constants,
+                 org.apache.axis2.description.AxisOperation" %>
+<%@ page import="org.apache.axis2.description.AxisService" %>
+<%@ page import="org.apache.axis2.description.Parameter" %>
+<%@ page import="org.apache.axis2.engine.AxisConfiguration" %>
+<%@ page import="org.apache.axis2.util.JavaUtils" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Hashtable" %>
+<%@ page import="java.util.Iterator" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <jsp:include page="include/httpbase.jsp"/>
@@ -78,7 +83,7 @@
         serviceDescription = "No description available for this service";
     }
 %>
-<h4>Service Description : <font color="black"><%=serviceDescription%></h4>
+<h4>Service Description : <font color="black"><%=serviceDescription%></font></h4>
 <i><font color="blue">Service Status : <%=axisService.isActive() ? "Active" : "InActive"%></font></i><br>
 <%
     if (opItr.hasNext()) {

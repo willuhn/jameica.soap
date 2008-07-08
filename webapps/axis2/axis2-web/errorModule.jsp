@@ -1,5 +1,3 @@
-<%@ page import="org.apache.axis2.Constants,
-                 java.util.Hashtable"%>
 <%--
   ~ Licensed to the Apache Software Foundation (ASF) under one
   ~ or more contributor license agreements. See the NOTICE file
@@ -18,6 +16,9 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   --%>
+
+<%@ page import="org.apache.axis2.Constants,
+                 java.util.Hashtable"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="include/adminheader.jsp"></jsp:include>
   <%
