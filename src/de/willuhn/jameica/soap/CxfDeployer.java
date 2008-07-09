@@ -1,7 +1,7 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/SoapDeployer.java,v $
+ * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/CxfDeployer.java,v $
  * $Revision: 1.1 $
- * $Date: 2007/09/29 17:19:43 $
+ * $Date: 2008/07/09 18:24:34 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -15,21 +15,25 @@ package de.willuhn.jameica.soap;
 
 import java.io.File;
 
+import org.mortbay.jetty.security.UserRealm;
+
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.jameica.webadmin.Settings;
 import de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer;
+import de.willuhn.jameica.webadmin.server.JameicaUserRealm;
 
 /**
- * Deployer fuer das Axis2-System.
+ * Deployer fuer das CXF-System.
  */
-public class SoapDeployer extends AbstractWebAppDeployer
+public class CxfDeployer extends AbstractWebAppDeployer
 {
   /**
    * @see de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer#getContext()
    */
   protected String getContext()
   {
-    return "/axis2";
+    return "/cxf";
   }
 
   /**
@@ -38,14 +42,33 @@ public class SoapDeployer extends AbstractWebAppDeployer
   protected String getPath()
   {
     AbstractPlugin plugin = Application.getPluginLoader().getPlugin(Plugin.class);
-    return plugin.getResources().getPath() + File.separator + "webapps" + File.separator + "axis2";
+    return plugin.getResources().getPath() + File.separator + "webapps" + File.separator + "cxf";
+  }
+
+  /**
+   * @see de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer#getSecurityRoles()
+   */
+  protected String[] getSecurityRoles()
+  {
+    return new String[]{"admin"};
+  }
+
+  /**
+   * @see de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer#getUserRealm()
+   */
+  protected UserRealm getUserRealm()
+  {
+    return Settings.getUseAuth() ? new JameicaUserRealm() : null;
   }
 
 }
 
 
 /*********************************************************************
- * $Log: SoapDeployer.java,v $
+ * $Log: CxfDeployer.java,v $
+ * Revision 1.1  2008/07/09 18:24:34  willuhn
+ * @N Apache CXF als zweiten SOAP-Provider hinzugefuegt
+ *
  * Revision 1.1  2007/09/29 17:19:43  willuhn
  * @N initial import
  *
