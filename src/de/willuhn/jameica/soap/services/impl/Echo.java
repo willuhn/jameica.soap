@@ -1,7 +1,7 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/cxf/services/impl/Attic/Echo.java,v $
+ * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/services/impl/Echo.java,v $
  * $Revision: 1.1 $
- * $Date: 2008/07/09 18:24:34 $
+ * $Date: 2008/07/09 21:39:40 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -11,7 +11,7 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.soap.cxf.services.impl;
+package de.willuhn.jameica.soap.services.impl;
 
 import javax.jws.WebService;
 
@@ -21,8 +21,8 @@ import de.willuhn.logging.Logger;
 /**
  * Implementierung des Echo-Services.
  */
-@WebService(endpointInterface = "de.willuhn.jameica.soap.cxf.services.Echo")
-public class Echo implements de.willuhn.jameica.soap.cxf.services.Echo
+@WebService(endpointInterface = "de.willuhn.jameica.soap.services.Echo")
+public class Echo implements de.willuhn.jameica.soap.services.Echo
 {
   /**
    * @see de.willuhn.jameica.soap.cxf.services.Echo#echo(java.lang.String)
@@ -38,6 +38,9 @@ public class Echo implements de.willuhn.jameica.soap.cxf.services.Echo
 
 /*********************************************************************
  * $Log: Echo.java,v $
+ * Revision 1.1  2008/07/09 21:39:40  willuhn
+ * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
+ *
  * Revision 1.1  2008/07/09 18:24:34  willuhn
  * @N Apache CXF als zweiten SOAP-Provider hinzugefuegt
  *

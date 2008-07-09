@@ -1,7 +1,7 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/cxf/Attic/Client.java,v $
+ * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/Client.java,v $
  * $Revision: 1.1 $
- * $Date: 2008/07/09 18:24:34 $
+ * $Date: 2008/07/09 21:39:39 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -11,7 +11,7 @@
  *
  **********************************************************************/
 
-package de.willuhn.jameica.soap.cxf;
+package de.willuhn.jameica.soap;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -25,7 +25,7 @@ import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.frontend.ClientProxyFactoryBean;
 import org.apache.cxf.transport.http.HTTPConduit;
 
-import de.willuhn.jameica.soap.cxf.services.Echo;
+import de.willuhn.jameica.soap.services.Echo;
 
 /**
  */
@@ -92,6 +92,9 @@ public class Client
 
 /*********************************************************************
  * $Log: Client.java,v $
+ * Revision 1.1  2008/07/09 21:39:39  willuhn
+ * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
+ *
  * Revision 1.1  2008/07/09 18:24:34  willuhn
  * @N Apache CXF als zweiten SOAP-Provider hinzugefuegt
  *

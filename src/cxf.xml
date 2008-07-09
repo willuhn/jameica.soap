@@ -9,7 +9,7 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
   <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-  <jaxws:endpoint id="echo" implementor="de.willuhn.jameica.soap.cxf.services.impl.Echo" address="/echo" />
+  <jaxws:endpoint id="echo" implementor="de.willuhn.jameica.soap.services.impl.Echo" address="/echo" />
 
   <!-- TODO: Hier weitere Services eintragen -->
 

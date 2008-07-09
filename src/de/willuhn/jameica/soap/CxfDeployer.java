@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/CxfDeployer.java,v $
- * $Revision: 1.1 $
- * $Date: 2008/07/09 18:24:34 $
+ * $Revision: 1.2 $
+ * $Date: 2008/07/09 21:39:39 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -50,7 +50,7 @@ public class CxfDeployer extends AbstractWebAppDeployer
    */
   protected String[] getSecurityRoles()
   {
-    return new String[]{"admin"};
+    return Settings.getUseAuth() ? new String[]{"admin"} : null;
   }
 
   /**
@@ -66,6 +66,9 @@ public class CxfDeployer extends AbstractWebAppDeployer
 
 /*********************************************************************
  * $Log: CxfDeployer.java,v $
+ * Revision 1.2  2008/07/09 21:39:39  willuhn
+ * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
+ *
  * Revision 1.1  2008/07/09 18:24:34  willuhn
  * @N Apache CXF als zweiten SOAP-Provider hinzugefuegt
  *
