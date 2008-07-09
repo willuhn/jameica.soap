@@ -1,7 +1,7 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/CxfDeployer.java,v $
- * $Revision: 1.2 $
- * $Date: 2008/07/09 21:39:39 $
+ * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/CXFDeployer.java,v $
+ * $Revision: 1.1 $
+ * $Date: 2008/07/09 23:30:53 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -25,15 +25,17 @@ import de.willuhn.jameica.webadmin.server.JameicaUserRealm;
 
 /**
  * Deployer fuer das CXF-System.
+ * Geht leider nicht direkt als AbstractServletDeployer da dort das URL-Mapping
+ * falsch waere.
  */
-public class CxfDeployer extends AbstractWebAppDeployer
+public class CXFDeployer extends AbstractWebAppDeployer
 {
   /**
    * @see de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer#getContext()
    */
   protected String getContext()
   {
-    return "/cxf";
+    return "/soap";
   }
 
   /**
@@ -42,7 +44,7 @@ public class CxfDeployer extends AbstractWebAppDeployer
   protected String getPath()
   {
     AbstractPlugin plugin = Application.getPluginLoader().getPlugin(Plugin.class);
-    return plugin.getResources().getPath() + File.separator + "webapps" + File.separator + "cxf";
+    return plugin.getResources().getPath() + File.separator + "webapps" + File.separator + "soap";
   }
 
   /**
@@ -65,7 +67,11 @@ public class CxfDeployer extends AbstractWebAppDeployer
 
 
 /*********************************************************************
- * $Log: CxfDeployer.java,v $
+ * $Log: CXFDeployer.java,v $
+ * Revision 1.1  2008/07/09 23:30:53  willuhn
+ * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
+ * @N Deployment vereinfacht
+ *
  * Revision 1.2  2008/07/09 21:39:39  willuhn
  * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
  *

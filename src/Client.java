@@ -1,7 +1,7 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Attic/Client.java,v $
+ * $Source: /cvsroot/jameica/jameica.soap/src/Client.java,v $
  * $Revision: 1.1 $
- * $Date: 2008/07/09 21:39:39 $
+ * $Date: 2008/07/09 23:30:53 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -10,8 +10,6 @@
  * All rights reserved
  *
  **********************************************************************/
-
-package de.willuhn.jameica.soap;
 
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -28,6 +26,7 @@ import org.apache.cxf.transport.http.HTTPConduit;
 import de.willuhn.jameica.soap.services.Echo;
 
 /**
+ * Test-Client.
  */
 public class Client
 {
@@ -37,7 +36,7 @@ public class Client
    */
   public static void main(String[] args) throws Exception
   {
-    String url = "https://localhost:8080/cxf/services/echo";
+    String url = "https://localhost:8080/soap/echo";
 
     ClientProxyFactoryBean factory = new ClientProxyFactoryBean();
     factory.setServiceClass(Echo.class);
@@ -92,6 +91,10 @@ public class Client
 
 /*********************************************************************
  * $Log: Client.java,v $
+ * Revision 1.1  2008/07/09 23:30:53  willuhn
+ * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
+ * @N Deployment vereinfacht
+ *
  * Revision 1.1  2008/07/09 21:39:39  willuhn
  * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
  *
