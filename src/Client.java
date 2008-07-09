@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/Client.java,v $
- * $Revision: 1.1 $
- * $Date: 2008/07/09 23:30:53 $
+ * $Revision: 1.2 $
+ * $Date: 2008/07/09 23:52:58 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -20,7 +20,7 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.cxf.configuration.jsse.TLSClientParameters;
 import org.apache.cxf.configuration.security.AuthorizationPolicy;
 import org.apache.cxf.frontend.ClientProxy;
-import org.apache.cxf.frontend.ClientProxyFactoryBean;
+import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.transport.http.HTTPConduit;
 
 import de.willuhn.jameica.soap.services.Echo;
@@ -38,7 +38,7 @@ public class Client
   {
     String url = "https://localhost:8080/soap/echo";
 
-    ClientProxyFactoryBean factory = new ClientProxyFactoryBean();
+    JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
     factory.setServiceClass(Echo.class);
     factory.setAddress(url);
     
@@ -57,6 +57,7 @@ public class Client
       
       // Authentifizierung noetig?
       AuthorizationPolicy auth = conduit.getAuthorization();
+      if (auth == null) auth = new AuthorizationPolicy();
       auth.setUserName("admin");
       auth.setPassword("test");
     }
@@ -91,6 +92,9 @@ public class Client
 
 /*********************************************************************
  * $Log: Client.java,v $
+ * Revision 1.2  2008/07/09 23:52:58  willuhn
+ * @B Client gefixt - verwendete simple front statt jax-ws front
+ *
  * Revision 1.1  2008/07/09 23:30:53  willuhn
  * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
  * @N Deployment vereinfacht
