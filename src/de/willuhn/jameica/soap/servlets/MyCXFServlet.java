@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/servlets/MyCXFServlet.java,v $
- * $Revision: 1.1 $
- * $Date: 2008/07/09 23:30:53 $
+ * $Revision: 1.2 $
+ * $Date: 2008/07/10 09:19:11 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -17,7 +17,6 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.xml.ws.Endpoint;
 
-import org.apache.cxf.Bus;
 import org.apache.cxf.BusFactory;
 import org.apache.cxf.transport.servlet.CXFNonSpringServlet;
 
@@ -41,13 +40,12 @@ public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
   private static Queue queue = new Queue(100);
 
   /**
-   * @see org.apache.cxf.transport.servlet.CXFServlet#loadBus(javax.servlet.ServletConfig)
+   * @see org.apache.cxf.transport.servlet.CXFNonSpringServlet#loadBus(javax.servlet.ServletConfig)
    */
   public void loadBus(ServletConfig config) throws ServletException
   {
     super.loadBus(config);
-    Bus bus = this.getBus();
-    BusFactory.setDefaultBus(bus);
+    BusFactory.setDefaultBus(this.getBus()); // Wir machen den Servlet-Bus zum Default-Bus
     
     // Wir deployen die aufgelaufenen Services.
     while (queue.size() > 0)
@@ -117,6 +115,9 @@ public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
 
 /**********************************************************************
  * $Log: MyCXFServlet.java,v $
+ * Revision 1.2  2008/07/10 09:19:11  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.1  2008/07/09 23:30:53  willuhn
  * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
  * @N Deployment vereinfacht
