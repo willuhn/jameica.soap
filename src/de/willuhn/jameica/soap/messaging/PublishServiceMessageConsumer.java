@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/messaging/PublishServiceMessageConsumer.java,v $
- * $Revision: 1.1 $
- * $Date: 2008/07/11 15:38:52 $
+ * $Revision: 1.2 $
+ * $Date: 2008/07/11 16:50:12 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -122,14 +122,17 @@ public class PublishServiceMessageConsumer implements MessageConsumer
       Logger.warn("skip service deployment, no service instance given");
       return;
     }
-    Logger.info("deploying webservice " + service.getClass().getName() + " at /" + name);
-    Endpoint.publish("/" + name,service);
+    Logger.info("deploying webservice " + service.getClass().getName() + " at " + name);
+    Endpoint.publish(name,service);
   }
 }
 
 
 /*********************************************************************
  * $Log: PublishServiceMessageConsumer.java,v $
+ * Revision 1.2  2008/07/11 16:50:12  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.1  2008/07/11 15:38:52  willuhn
  * @N Service-Deployment
  *
