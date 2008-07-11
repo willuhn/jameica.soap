@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Plugin.java,v $
- * $Revision: 1.4 $
- * $Date: 2008/07/10 09:19:11 $
+ * $Revision: 1.5 $
+ * $Date: 2008/07/11 15:38:52 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -15,8 +15,9 @@ package de.willuhn.jameica.soap;
 
 import org.apache.commons.logging.LogFactory;
 
+import de.willuhn.jameica.messaging.QueryMessage;
 import de.willuhn.jameica.plugin.AbstractPlugin;
-import de.willuhn.jameica.soap.messaging.DeployServiceMessage;
+import de.willuhn.jameica.soap.messaging.PublishServiceMessageConsumer;
 import de.willuhn.jameica.soap.services.impl.Echo;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
@@ -49,7 +50,8 @@ public class Plugin extends AbstractPlugin
     } catch (Exception e) {
       Logger.error("unable to register java-logging adapter",e);
     }
-    Application.getMessagingFactory().sendMessage(new DeployServiceMessage("echo", new Echo()));
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(new PublishServiceMessageConsumer());
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").sendMessage(new QueryMessage("echo", new Echo()));
   }
 
   /**
@@ -78,6 +80,9 @@ public class Plugin extends AbstractPlugin
 
 /**********************************************************************
  * $Log: Plugin.java,v $
+ * Revision 1.5  2008/07/11 15:38:52  willuhn
+ * @N Service-Deployment
+ *
  * Revision 1.4  2008/07/10 09:19:11  willuhn
  * *** empty log message ***
  *

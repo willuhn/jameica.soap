@@ -18,6 +18,5 @@
     <include>jameica\.soap\.jar</include>
     <include>.*\.class</include>
   </classfinder>
-
 </plugin>
 
