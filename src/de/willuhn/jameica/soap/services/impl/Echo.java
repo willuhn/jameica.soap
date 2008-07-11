@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/services/impl/Echo.java,v $
- * $Revision: 1.2 $
- * $Date: 2008/07/09 23:30:53 $
+ * $Revision: 1.3 $
+ * $Date: 2008/07/11 12:56:58 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -25,7 +25,7 @@ import de.willuhn.logging.Logger;
 public class Echo implements de.willuhn.jameica.soap.services.Echo
 {
   /**
-   * @see de.willuhn.jameica.soap.cxf.services.Echo#echo(java.lang.String)
+   * @see de.willuhn.jameica.soap.services.Echo#echo(java.lang.String)
    */
   public String echo(String echo)
   {
@@ -38,6 +38,9 @@ public class Echo implements de.willuhn.jameica.soap.services.Echo
 
 /*********************************************************************
  * $Log: Echo.java,v $
+ * Revision 1.3  2008/07/11 12:56:58  willuhn
+ * *** empty log message ***
+ *
  * Revision 1.2  2008/07/09 23:30:53  willuhn
  * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
  * @N Deployment vereinfacht
