@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/messaging/PublishServiceMessageConsumer.java,v $
- * $Revision: 1.2 $
- * $Date: 2008/07/11 16:50:12 $
+ * $Revision: 1.3 $
+ * $Date: 2008/08/06 18:00:58 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -124,12 +124,16 @@ public class PublishServiceMessageConsumer implements MessageConsumer
     }
     Logger.info("deploying webservice " + service.getClass().getName() + " at " + name);
     Endpoint.publish(name,service);
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish.done").sendMessage(msg);
   }
 }
 
 
 /*********************************************************************
  * $Log: PublishServiceMessageConsumer.java,v $
+ * Revision 1.3  2008/08/06 18:00:58  willuhn
+ * @N Message nach erfolgreichem Deployment eines Webservice senden
+ *
  * Revision 1.2  2008/07/11 16:50:12  willuhn
  * *** empty log message ***
  *
