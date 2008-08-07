@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/servlets/MyCXFServlet.java,v $
- * $Revision: 1.3 $
- * $Date: 2008/07/11 15:38:52 $
+ * $Revision: 1.4 $
+ * $Date: 2008/08/07 15:37:43 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -17,7 +17,13 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
 import org.apache.cxf.BusFactory;
+import org.apache.cxf.interceptor.Interceptor;
 import org.apache.cxf.transport.servlet.CXFNonSpringServlet;
+
+import de.willuhn.jameica.messaging.Message;
+import de.willuhn.jameica.messaging.MessageConsumer;
+import de.willuhn.jameica.messaging.QueryMessage;
+import de.willuhn.jameica.system.Application;
 
 
 /**
@@ -27,7 +33,7 @@ import org.apache.cxf.transport.servlet.CXFNonSpringServlet;
  * die Datei aendern zu muessen.
  * Siehe http://cwiki.apache.org/CXF20DOC/servlet-transport.html
  */
-public class MyCXFServlet extends CXFNonSpringServlet
+public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
 {
   /**
    * @see org.apache.cxf.transport.servlet.CXFNonSpringServlet#loadBus(javax.servlet.ServletConfig)
@@ -36,12 +42,50 @@ public class MyCXFServlet extends CXFNonSpringServlet
   {
     super.loadBus(config);
     BusFactory.setDefaultBus(this.getBus()); // Wir machen den Servlet-Bus zum Default-Bus
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.interceptor.add").registerMessageConsumer(this);
+  }
+
+  /**
+   * @see de.willuhn.jameica.messaging.MessageConsumer#autoRegister()
+   */
+  public boolean autoRegister()
+  {
+    return false;
+  }
+
+  /**
+   * @see de.willuhn.jameica.messaging.MessageConsumer#getExpectedMessageTypes()
+   */
+  public Class[] getExpectedMessageTypes()
+  {
+    return new Class[]{QueryMessage.class};
+  }
+
+  /**
+   * @see de.willuhn.jameica.messaging.MessageConsumer#handleMessage(de.willuhn.jameica.messaging.Message)
+   */
+  public void handleMessage(Message message) throws Exception
+  {
+    QueryMessage msg = (QueryMessage) message;
+    
+    Object o = msg.getData();
+    if (o == null || !(o instanceof Interceptor))
+      return;
+    
+    String direction = msg.getName();
+    if ("in".equals(direction))
+      this.getBus().getInInterceptors().add((Interceptor) o);
+    else
+      this.getBus().getOutInterceptors().add((Interceptor) o);
   }
 }
 
 
 /**********************************************************************
  * $Log: MyCXFServlet.java,v $
+ * Revision 1.4  2008/08/07 15:37:43  willuhn
+ * @N MessageConsumer zum Registrieren von Interceptors in CXF
+ *
  * Revision 1.3  2008/07/11 15:38:52  willuhn
  * @N Service-Deployment
  *
