@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Plugin.java,v $
- * $Revision: 1.6 $
- * $Date: 2008/07/11 16:50:13 $
+ * $Revision: 1.7 $
+ * $Date: 2008/08/08 11:24:26 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -50,7 +50,8 @@ public class Plugin extends AbstractPlugin
     } catch (Exception e) {
       Logger.error("unable to register java-logging adapter",e);
     }
-    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(new PublishServiceMessageConsumer());
+    
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(PublishServiceMessageConsumer.create());
     Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").sendMessage(new QueryMessage("/echo", new Echo()));
   }
 
@@ -80,6 +81,9 @@ public class Plugin extends AbstractPlugin
 
 /**********************************************************************
  * $Log: Plugin.java,v $
+ * Revision 1.7  2008/08/08 11:24:26  willuhn
+ * @N Console-Logging von Java-Logging ausschalten. Da wir es auf den Jameica-Logger umbiegen, wuerde es sonst doppelt auf der Console erscheinen
+ *
  * Revision 1.6  2008/07/11 16:50:13  willuhn
  * *** empty log message ***
  *

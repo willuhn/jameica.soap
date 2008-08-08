@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/servlets/MyCXFServlet.java,v $
- * $Revision: 1.4 $
- * $Date: 2008/08/07 15:37:43 $
+ * $Revision: 1.5 $
+ * $Date: 2008/08/08 11:24:26 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -24,6 +24,7 @@ import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
 import de.willuhn.jameica.messaging.QueryMessage;
 import de.willuhn.jameica.system.Application;
+import de.willuhn.logging.Logger;
 
 
 /**
@@ -74,15 +75,24 @@ public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
     
     String direction = msg.getName();
     if ("in".equals(direction))
+    {
+      Logger.info("register IN interceptor " + o.getClass().getName());
       this.getBus().getInInterceptors().add((Interceptor) o);
+    }
     else
+    {
+      Logger.info("register OUT interceptor " + o.getClass().getName());
       this.getBus().getOutInterceptors().add((Interceptor) o);
+    }
   }
 }
 
 
 /**********************************************************************
  * $Log: MyCXFServlet.java,v $
+ * Revision 1.5  2008/08/08 11:24:26  willuhn
+ * @N Console-Logging von Java-Logging ausschalten. Da wir es auf den Jameica-Logger umbiegen, wuerde es sonst doppelt auf der Console erscheinen
+ *
  * Revision 1.4  2008/08/07 15:37:43  willuhn
  * @N MessageConsumer zum Registrieren von Interceptors in CXF
  *
