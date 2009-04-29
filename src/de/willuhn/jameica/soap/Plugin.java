@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Plugin.java,v $
- * $Revision: 1.7 $
- * $Date: 2008/08/08 11:24:26 $
+ * $Revision: 1.8 $
+ * $Date: 2009/04/29 21:10:22 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -54,33 +54,14 @@ public class Plugin extends AbstractPlugin
     Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(PublishServiceMessageConsumer.create());
     Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").sendMessage(new QueryMessage("/echo", new Echo()));
   }
-
-  /**
-   * @see de.willuhn.jameica.plugin.AbstractPlugin#install()
-   */
-  public void install() throws ApplicationException
-  {
-  }
-
-  /**
-   * @see de.willuhn.jameica.plugin.AbstractPlugin#shutDown()
-   */
-  public void shutDown()
-  {
-  }
-
-  /**
-   * @see de.willuhn.jameica.plugin.AbstractPlugin#update(double)
-   */
-  public void update(double oldVersion) throws ApplicationException
-  {
-  }
-
 }
 
 
 /**********************************************************************
  * $Log: Plugin.java,v $
+ * Revision 1.8  2009/04/29 21:10:22  willuhn
+ * @R removed unused/deprecated code
+ *
  * Revision 1.7  2008/08/08 11:24:26  willuhn
  * @N Console-Logging von Java-Logging ausschalten. Da wir es auf den Jameica-Logger umbiegen, wuerde es sonst doppelt auf der Console erscheinen
  *

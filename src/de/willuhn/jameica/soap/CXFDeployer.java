@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/CXFDeployer.java,v $
- * $Revision: 1.1 $
- * $Date: 2008/07/09 23:30:53 $
+ * $Revision: 1.2 $
+ * $Date: 2009/04/29 21:10:22 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -17,7 +17,7 @@ import java.io.File;
 
 import org.mortbay.jetty.security.UserRealm;
 
-import de.willuhn.jameica.plugin.AbstractPlugin;
+import de.willuhn.jameica.plugin.Manifest;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.jameica.webadmin.Settings;
 import de.willuhn.jameica.webadmin.deploy.AbstractWebAppDeployer;
@@ -43,8 +43,8 @@ public class CXFDeployer extends AbstractWebAppDeployer
    */
   protected String getPath()
   {
-    AbstractPlugin plugin = Application.getPluginLoader().getPlugin(Plugin.class);
-    return plugin.getResources().getPath() + File.separator + "webapps" + File.separator + "soap";
+    Manifest mf = Application.getPluginLoader().getManifest(Plugin.class);
+    return mf.getPluginDir() + File.separator + "webapps" + File.separator + "soap";
   }
 
   /**
@@ -68,6 +68,9 @@ public class CXFDeployer extends AbstractWebAppDeployer
 
 /*********************************************************************
  * $Log: CXFDeployer.java,v $
+ * Revision 1.2  2009/04/29 21:10:22  willuhn
+ * @R removed unused/deprecated code
+ *
  * Revision 1.1  2008/07/09 23:30:53  willuhn
  * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
  * @N Deployment vereinfacht
