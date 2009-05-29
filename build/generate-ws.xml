@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 <!--
- $Revision: 1.3 $
- $Date: 2008/07/11 15:38:52 $
+ $Revision: 1.4 $
+ $Date: 2009/05/29 16:23:59 $
  $Author: willuhn $
  
  Copyright (c) by willuhn software & services
@@ -39,7 +39,15 @@
          listener.http.ssl=false
          listener.http.auth=false
     //-->
-    <property name="wsdl.url" value="http://localhost:8080/soap/echo?wsdl" />
+    <property name="wsdl.url" value="http://localhost:8080/soap/message?wsdl" />
+    
+    <!-- Name des zu verwendenden Java-Packages fuer die zu erzeugenden Klassen //-->
+    <property name="wsdl.package" value="testclient" />
+
+    <!-- Verzeichnis, in dem die erzeugten Klassen abgelegt werden soll //-->
+    <property name="wsdl.src-dir" value="src" />
+    
+    <!-- Ab hier muss nichts mehr geaendert werden //-->
     <property environment="env" />
     
     <path id="compilepath">
@@ -53,7 +61,7 @@
 
   <target depends="init" name="generate">
     <java classname="org.apache.cxf.tools.wsdlto.WSDLToJava" classpathref="compilepath" failonerror="true" fork="true" dir=".">
-      <arg line="-p testclient -d src -client -verbose -autoNameResolution ${wsdl.url}" />
+      <arg line="-p ${wsdl.package} -d ${wsdl.src-dir} -client -verbose -autoNameResolution ${wsdl.url}" />
     </java>
   </target>
 
