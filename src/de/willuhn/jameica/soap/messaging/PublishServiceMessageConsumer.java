@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/messaging/PublishServiceMessageConsumer.java,v $
- * $Revision: 1.4 $
- * $Date: 2008/08/08 11:24:26 $
+ * $Revision: 1.5 $
+ * $Date: 2009/05/29 15:24:55 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -13,8 +13,12 @@
 
 package de.willuhn.jameica.soap.messaging;
 
+import java.net.InetAddress;
+
+import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
+import de.willuhn.jameica.messaging.LookupService;
 import de.willuhn.jameica.messaging.Message;
 import de.willuhn.jameica.messaging.MessageConsumer;
 import de.willuhn.jameica.messaging.QueryMessage;
@@ -135,13 +139,54 @@ public class PublishServiceMessageConsumer implements MessageConsumer
     }
     Logger.info("deploying webservice " + service.getClass().getName() + " at " + name);
     Endpoint.publish(name,service);
+
+    LookupService.register("soap:" + createName(service),createUrl(name));
     Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish.done").sendMessage(msg);
+  }
+  
+  /**
+   * Ermittelt den Service-Namen aus der Instanz.
+   * @param service Service-Instanz.
+   * @return Name des Service.
+   * @throws Exception
+   */
+  private static String createName(Object service) throws Exception
+  {
+    WebService s = service.getClass().getAnnotation(WebService.class);
+    if (s == null)
+      return service.getClass().getName(); // Annotation fehlt. Dann nehmen wir den Klassennamen der Implementierung
+
+    return s.endpointInterface();
+  }
+  /**
+   * Erzeugt die SOAP-URL fuer einen Service-Namen.
+   * @param name Service-Name.
+   * @return URL.
+   * @throws Exception
+   */
+  private static String createUrl(String name) throws Exception
+  {
+    InetAddress host = de.willuhn.jameica.webadmin.Settings.getAddress();
+    String address = host == null ? Application.getCallback().getHostname() : host.getHostAddress();
+    StringBuffer sb = new StringBuffer();
+    sb.append("http");
+    if (de.willuhn.jameica.webadmin.Settings.getUseSSL()) sb.append("s");
+    sb.append("://");
+    sb.append(address);
+    sb.append(":");
+    sb.append(de.willuhn.jameica.webadmin.Settings.getPort());
+    sb.append("/soap");
+    sb.append(name);
+    return sb.toString();
   }
 }
 
 
 /*********************************************************************
  * $Log: PublishServiceMessageConsumer.java,v $
+ * Revision 1.5  2009/05/29 15:24:55  willuhn
+ * @N SOAP-Webservices im Lookup-Service registrieren, damit sie genersich im Netz gefunden werden
+ *
  * Revision 1.4  2008/08/08 11:24:26  willuhn
  * @N Console-Logging von Java-Logging ausschalten. Da wir es auf den Jameica-Logger umbiegen, wuerde es sonst doppelt auf der Console erscheinen
  *
