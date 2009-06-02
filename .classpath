@@ -5,9 +5,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jameica.webadmin"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jameica"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/cxf-2.1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-jaxws_2.1_spec-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/geronimo-ws-metadata_2.0_spec-1.1.2.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jaxb-api-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cxf-2.2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
