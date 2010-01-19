@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/Plugin.java,v $
- * $Revision: 1.8 $
- * $Date: 2009/04/29 21:10:22 $
+ * $Revision: 1.9 $
+ * $Date: 2010/01/19 00:33:59 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -15,10 +15,8 @@ package de.willuhn.jameica.soap;
 
 import org.apache.commons.logging.LogFactory;
 
-import de.willuhn.jameica.messaging.QueryMessage;
 import de.willuhn.jameica.plugin.AbstractPlugin;
 import de.willuhn.jameica.soap.messaging.PublishServiceMessageConsumer;
-import de.willuhn.jameica.soap.services.impl.Echo;
 import de.willuhn.jameica.system.Application;
 import de.willuhn.logging.Logger;
 import de.willuhn.util.ApplicationException;
@@ -29,15 +27,6 @@ import de.willuhn.util.ApplicationException;
  */
 public class Plugin extends AbstractPlugin
 {
-
-  /**
-   * ct.
-   */
-  public Plugin()
-  {
-    super();
-  }
-
   /**
    * @see de.willuhn.jameica.plugin.AbstractPlugin#init()
    */
@@ -47,18 +36,23 @@ public class Plugin extends AbstractPlugin
     try
     {
       Class.forName("de.willuhn.logging.JavaLoggingHandler");
-    } catch (Exception e) {
+    }
+    catch (Exception e)
+    {
       Logger.error("unable to register java-logging adapter",e);
     }
-    
-    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(PublishServiceMessageConsumer.create());
-    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").sendMessage(new QueryMessage("/echo", new Echo()));
+
+    Application.getMessagingFactory().getMessagingQueue("jameica.soap.publish").registerMessageConsumer(PublishServiceMessageConsumer.create());  
   }
 }
 
 
 /**********************************************************************
  * $Log: Plugin.java,v $
+ * Revision 1.9  2010/01/19 00:33:59  willuhn
+ * @C Publishing der Webservices aus MessageConsumer in dedizierten PublishService verschoben
+ * @N Auto-Deployment von Services via AutoService
+ *
  * Revision 1.8  2009/04/29 21:10:22  willuhn
  * @R removed unused/deprecated code
  *

@@ -18,5 +18,9 @@
     <include>jameica\.soap\.jar</include>
     <include>.*\.class</include>
   </classfinder>
+  
+  <services>
+    <service name="publish" class="de.willuhn.jameica.soap.services.PublishService" autostart="true"/>
+  </services>
 </plugin>
 

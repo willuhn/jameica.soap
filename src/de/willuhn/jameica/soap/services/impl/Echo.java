@@ -1,7 +1,7 @@
 /**********************************************************************
  * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/services/impl/Echo.java,v $
- * $Revision: 1.3 $
- * $Date: 2008/07/11 12:56:58 $
+ * $Revision: 1.4 $
+ * $Date: 2010/01/19 00:33:59 $
  * $Author: willuhn $
  * $Locker:  $
  * $State: Exp $
@@ -21,7 +21,7 @@ import de.willuhn.logging.Logger;
 /**
  * Implementierung des Echo-Services.
  */
-@WebService(endpointInterface="de.willuhn.jameica.soap.services.Echo")
+@WebService(endpointInterface="de.willuhn.jameica.soap.services.Echo",name="Echo")
 public class Echo implements de.willuhn.jameica.soap.services.Echo
 {
   /**
@@ -38,6 +38,10 @@ public class Echo implements de.willuhn.jameica.soap.services.Echo
 
 /*********************************************************************
  * $Log: Echo.java,v $
+ * Revision 1.4  2010/01/19 00:33:59  willuhn
+ * @C Publishing der Webservices aus MessageConsumer in dedizierten PublishService verschoben
+ * @N Auto-Deployment von Services via AutoService
+ *
  * Revision 1.3  2008/07/11 12:56:58  willuhn
  * *** empty log message ***
  *
