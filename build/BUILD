@@ -1,3 +1,3 @@
 #Build Number for ANT. Do not edit!
-#Thu Nov 04 23:17:57 CET 2010
-build.number=51
+#Mon Nov 08 12:40:42 CET 2010
+build.number=52
