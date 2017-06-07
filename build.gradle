@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+compileJava.options.encoding = 'ISO-8859-1'
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'org.apache.cxf:cxf-rt-frontend-jaxws:3.+'
+  compile 'org.apache.cxf:cxf-rt-transports-http:3.+'
+}
+
+task download(type: Copy) {
+  into "lib"
+  from configurations.runtime
+}

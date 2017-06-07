@@ -1,13 +1,8 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/Client.java,v $
- * $Revision: 1.2 $
- * $Date: 2008/07/09 23:52:58 $
- * $Author: willuhn $
- * $Locker:  $
- * $State: Exp $
  *
- * Copyright (c) by willuhn software & services
+ * Copyright (c) by Olaf Willuhn
  * All rights reserved
+ * GPLv2
  *
  **********************************************************************/
 
@@ -36,14 +31,14 @@ public class Client
    */
   public static void main(String[] args) throws Exception
   {
-    String url = "https://localhost:8080/soap/echo";
+    String url = "https://localhost:8080/soap/Echo";
 
     JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
     factory.setServiceClass(Echo.class);
     factory.setAddress(url);
-    
+
     Echo client = (Echo) factory.create();
-    
+
     if (url.startsWith("https://"))
     {
       org.apache.cxf.endpoint.Client proxy = ClientProxy.getClient(client);
@@ -61,8 +56,7 @@ public class Client
       auth.setUserName("admin");
       auth.setPassword("test");
     }
-    
-    
+
     System.out.println(client.echo("Foo"));
   }
   
@@ -88,21 +82,3 @@ public class Client
     
   }
 }
-
-
-/*********************************************************************
- * $Log: Client.java,v $
- * Revision 1.2  2008/07/09 23:52:58  willuhn
- * @B Client gefixt - verwendete simple front statt jax-ws front
- *
- * Revision 1.1  2008/07/09 23:30:53  willuhn
- * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
- * @N Deployment vereinfacht
- *
- * Revision 1.1  2008/07/09 21:39:39  willuhn
- * @R Axis2 gegen Apache CXF ersetzt. Letzteres ist einfach besser ;)
- *
- * Revision 1.1  2008/07/09 18:24:34  willuhn
- * @N Apache CXF als zweiten SOAP-Provider hinzugefuegt
- *
- **********************************************************************/

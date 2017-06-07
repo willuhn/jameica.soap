@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jameica.webadmin"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jameica"/>
-	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/geronimo-jaxws_2.1_spec-1.0.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/geronimo-ws-metadata_2.0_spec-1.1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jaxb-api-2.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/cxf-2.2.2.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jameica.webadmin"/>
+	<classpathentry kind="lib" path="lib/asm-5.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cxf-core-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-bindings-soap-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-bindings-xml-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-databinding-jaxb-3.1.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cxf-rt-frontend-jaxws-3.1.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cxf-rt-frontend-simple-3.1.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/cxf-rt-transports-http-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-ws-addr-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-ws-policy-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/cxf-rt-wsdl-3.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-core-2.2.11.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-impl-2.2.11.jar"/>
+	<classpathentry kind="lib" path="lib/neethi-3.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/stax2-api-3.1.4.jar"/>
+	<classpathentry kind="lib" path="lib/woodstox-core-asl-4.4.1.jar"/>
+	<classpathentry kind="lib" path="lib/wsdl4j-1.6.3.jar"/>
+	<classpathentry kind="lib" path="lib/xml-resolver-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/xmlschema-core-2.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

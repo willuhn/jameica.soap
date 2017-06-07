@@ -1,20 +1,14 @@
 /**********************************************************************
- * $Source: /cvsroot/jameica/jameica.soap/src/de/willuhn/jameica/soap/servlets/MyCXFServlet.java,v $
- * $Revision: 1.5 $
- * $Date: 2008/08/08 11:24:26 $
- * $Author: willuhn $
- * $Locker:  $
- * $State: Exp $
  *
- * Copyright (c) by willuhn software & services
+ * Copyright (c) by Olaf Willuhn
  * All rights reserved
+ * GPLv2
  *
  **********************************************************************/
 
 package de.willuhn.jameica.soap.servlets;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 
 import org.apache.cxf.BusFactory;
 import org.apache.cxf.interceptor.Interceptor;
@@ -39,7 +33,7 @@ public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
   /**
    * @see org.apache.cxf.transport.servlet.CXFNonSpringServlet#loadBus(javax.servlet.ServletConfig)
    */
-  public void loadBus(ServletConfig config) throws ServletException
+  protected void loadBus(ServletConfig config)
   {
     super.loadBus(config);
     BusFactory.setDefaultBus(this.getBus()); // Wir machen den Servlet-Bus zum Default-Bus
@@ -86,24 +80,3 @@ public class MyCXFServlet extends CXFNonSpringServlet implements MessageConsumer
     }
   }
 }
-
-
-/**********************************************************************
- * $Log: MyCXFServlet.java,v $
- * Revision 1.5  2008/08/08 11:24:26  willuhn
- * @N Console-Logging von Java-Logging ausschalten. Da wir es auf den Jameica-Logger umbiegen, wuerde es sonst doppelt auf der Console erscheinen
- *
- * Revision 1.4  2008/08/07 15:37:43  willuhn
- * @N MessageConsumer zum Registrieren von Interceptors in CXF
- *
- * Revision 1.3  2008/07/11 15:38:52  willuhn
- * @N Service-Deployment
- *
- * Revision 1.2  2008/07/10 09:19:11  willuhn
- * *** empty log message ***
- *
- * Revision 1.1  2008/07/09 23:30:53  willuhn
- * @R Nicht benoetigte Jars (gemaess WHICH_JARS) entfernt
- * @N Deployment vereinfacht
- *
- **********************************************************************/
