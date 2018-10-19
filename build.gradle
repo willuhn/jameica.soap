@@ -17,6 +17,7 @@ repositories {
 dependencies {
   compile 'org.apache.cxf:cxf-rt-frontend-jaxws:3.+'
   compile 'org.apache.cxf:cxf-rt-transports-http:3.+'
+  compile 'javax.xml.soap:javax.xml.soap-api:1.4+'
 }
 
 task download(type: Copy) {
